@@ -13,7 +13,18 @@
 | 心理问题举牌 | 中文独立杂志、直接表达 |
 | 经典白板 | 心理问题、先说清楚、试试就知道 |
 
-![语言的用法](macos/bundled-themes/dongge-marginalia/background.png)
+## Codex 实际效果
+
+<table>
+  <tr>
+    <td align="center"><strong>语言的用法</strong><br><img src="docs/screenshots/dongge-marginalia-codex.png" alt="语言的用法 Codex 主题截图"></td>
+    <td align="center"><strong>开源工作台</strong><br><img src="docs/screenshots/dongge-blueprint-codex.png" alt="开源工作台 Codex 主题截图"></td>
+  </tr>
+  <tr>
+    <td align="center"><strong>心理问题举牌</strong><br><img src="docs/screenshots/dongge-placard-codex.png" alt="心理问题举牌 Codex 主题截图"></td>
+    <td align="center"><strong>经典白板</strong><br><img src="docs/screenshots/dongge-light-codex.png" alt="经典白板 Codex 主题截图"></td>
+  </tr>
+</table>
 
 安装时会直接询问使用哪一张栋哥图片，安装后也可以从“选择风格”入口切换四套主题。
 
