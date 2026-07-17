@@ -1,6 +1,6 @@
 [CmdletBinding()]
 param(
-  [ValidateSet('dongge-marginalia', 'dongge-blueprint', 'dongge-placard', 'dongge-light')]
+  [ValidateSet('dongge-marginalia', 'dongge-placard')]
   [string]$Id,
   [int]$Port = 9335,
   [switch]$NoApply
@@ -14,16 +14,12 @@ $ThemeDir = Join-Path $StateRoot 'theme'
 
 if (-not $Id) {
   Write-Host '1. 语言的用法'
-  Write-Host '2. 开源工作台'
-  Write-Host '3. 心理问题举牌'
-  Write-Host '4. 经典白板'
-  $selection = Read-Host '选择风格 (1-4)'
+  Write-Host '2. 心理问题'
+  $selection = Read-Host '选择风格 (1-2)'
   $Id = switch ($selection) {
     '1' { 'dongge-marginalia' }
-    '2' { 'dongge-blueprint' }
-    '3' { 'dongge-placard' }
-    '4' { 'dongge-light' }
-    default { throw '请选择 1、2、3 或 4。' }
+    '2' { 'dongge-placard' }
+    default { throw '请选择 1 或 2。' }
   }
 }
 

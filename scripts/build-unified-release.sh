@@ -42,7 +42,7 @@ trap '/bin/rm -rf "$TMP"' EXIT
   'Windows：进入 Windows，以 PowerShell 运行 scripts/install-dream-skin.ps1，先选择默认栋哥图片，之后从“栋哥 Codex”快捷方式打开。' \
   '注意：如果官方 Codex 已经打开，请先手动退出再打开栋哥 Codex；安装包不会自动关闭或重启宿主 app。' \
   '' \
-  '内置：语言的用法 / 开源工作台 / 心理问题举牌，另保留经典白板兼容主题。' \
+  '内置：语言的用法 / 心理问题。' \
   'Restore 可恢复原版；不会修改官方 app.asar、WindowsApps 或模型供应商配置。' \
   > "$PACK/先看这里.txt"
 

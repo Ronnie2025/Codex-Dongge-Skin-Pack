@@ -1,6 +1,6 @@
 ---
 name: codex-dream-skin
-description: Apply, switch, launch, verify, repair, update, or restore the Dongge three-theme pack for the Windows Codex desktop app.
+description: Apply, switch, launch, verify, repair, update, or restore the two-theme Dongge pack for the Windows Codex desktop app.
 ---
 
 # Codex Dream Skin
@@ -9,9 +9,9 @@ Apply a reversible renderer skin through Chromium DevTools Protocol while launch
 
 ## Workflow
 
-1. Run `scripts/install-dream-skin.ps1` once to choose the default Dongge image, install the themes, and create the `栋哥 Codex` launch/restore shortcuts. For unattended install, pass `-ThemeId dongge-blueprint`.
+1. Run `scripts/install-dream-skin.ps1` once to choose the default Dongge image, install the themes, and create the `栋哥 Codex` launch/restore shortcuts. For unattended install, pass `-ThemeId dongge-placard`.
 2. Reopen through the `栋哥 Codex` shortcut so the CDP port and injector start together.
-3. Switch with `scripts/switch-theme.ps1 -Id dongge-marginalia|dongge-blueprint|dongge-placard|dongge-light`.
+3. Switch with `scripts/switch-theme.ps1 -Id dongge-marginalia|dongge-placard`.
 4. Run `scripts/verify-dream-skin.ps1 -ScreenshotPath <absolute-path>` after launch. Treat a missing hero, native composer, sidebar skin, or injection marker as failure. The native suggestion count is responsive and may be two to four.
 5. Inspect the screenshot against `references/qa-inventory.md`. Verify both the home screen and a normal task before signing off.
 6. Run `scripts/restore-dream-skin.ps1` for live removal. Add `-Uninstall` to delete shortcuts; add `-RestoreBaseTheme` when the user also wants the pre-install config backup restored.
@@ -32,6 +32,6 @@ Apply a reversible renderer skin through Chromium DevTools Protocol while launch
 - `scripts/injector.mjs`: CDP connection, renderer injection, verification, screenshot, and removal.
 - `assets/dream-skin.css`: full visual layer.
 - `assets/renderer-inject.js`: idempotent DOM integration and cleanup.
-- `themes/`: the three new 3:1 Dongge themes plus the classic compatibility preset.
+- `themes/`: the two retained 3:1 Dongge themes.
 - `references/qa-inventory.md`: required functional and visual signoff coverage.
 - `references/runtime-notes.md`: troubleshooting and update behavior.

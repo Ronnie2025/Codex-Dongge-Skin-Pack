@@ -4,7 +4,7 @@ An independent Dongge theme pack for the Codex desktop app on macOS and Windows.
 
 [Download the latest package](https://github.com/Ronnie2025/Codex-Dongge-Skin-Pack/releases/latest)
 
-The installer lets users choose among four bundled images: Language in Use, Open-source Workbench, Psychology Placard, and Classic Whiteboard. The installed theme switcher exposes the same four choices.
+The installer lets users choose between two bundled themes: Language in Use and Psychology Placard. The installed theme switcher exposes the same two choices.
 
 ## Safety
 

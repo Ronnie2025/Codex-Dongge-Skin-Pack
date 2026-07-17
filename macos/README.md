@@ -6,7 +6,7 @@ Turn an image you like into a Codex theme: a dedicated home banner, a low-noise 
 
 This project injects through **local loopback CDP**. It does **not** modify the official `.app`, `app.asar`, or code signature.
 
-The bundle includes three new Dongge themes plus the classic whiteboard preset.
+The bundle includes two Dongge themes: Language in Use and Psychological Problem.
 Install selects Codex's light appearance for visual consistency; Restore puts the
 user's original appearance setting back.
 
@@ -28,7 +28,7 @@ user's original appearance setting back.
 ./scripts/install-dream-skin-macos.sh --no-launch
 # The installer asks which Dongge image should be the default.
 # For unattended install:
-# ./scripts/install-dream-skin-macos.sh --theme-id dongge-blueprint --no-launch
+# ./scripts/install-dream-skin-macos.sh --theme-id dongge-placard --no-launch
 
 # Open “栋哥 Codex.app” from Desktop or ~/Applications for the normal daily entry point.
 # If official Codex is already open, quit it manually first.
@@ -56,8 +56,7 @@ Install location after step 2:
 | Theme backup | under Application Support (`theme-backup.json`) |
 | Stable app entry | `~/Applications/栋哥 Codex.app` |
 
-Theme ids accepted by `--theme-id`: `dongge-marginalia`, `dongge-blueprint`,
-`dongge-placard`, `dongge-light`.
+Theme ids accepted by `--theme-id`: `dongge-marginalia`, `dongge-placard`.
 
 If the official Codex icon is opened directly, the skin will not be injected. Quit the
 official app manually and reopen through `栋哥 Codex.app`.
@@ -102,7 +101,7 @@ CLI example:
   --highlight "#642a8c"
 ```
 
-Reset a customized profile to the bundled Dongge light preset:
+Reset a customized profile to the bundled Language in Use preset:
 
 ```bash
 ~/Library/Application\ Support/CodexDreamSkinStudio/engine/scripts/customize-theme-macos.sh --reset-demo

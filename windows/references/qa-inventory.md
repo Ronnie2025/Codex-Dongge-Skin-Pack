@@ -2,7 +2,7 @@
 
 ## User-visible claims
 
-1. The home screen visibly matches the selected Dongge reference: a warm paper-toned whiteboard hero, right-side portrait, `心理问题 / 试试就知道 / dbskill` treatment, native suggestion cards, and skinned native composer.
+1. The home screen visibly matches either retained Dongge reference: `语言的用法` or `心理问题`, with native suggestion cards and the native composer.
 2. The sidebar uses the warm off-white, charcoal, and restrained brick-red theme rather than merely changing the accent color.
 3. All real Codex controls remain interactive; the skin is not a screenshot overlay.
 4. The skin survives route changes and renderer reloads while the injector daemon runs.

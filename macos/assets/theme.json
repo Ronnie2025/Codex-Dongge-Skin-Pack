@@ -1,14 +1,14 @@
 {
   "schemaVersion": 1,
-  "id": "dongge-dbskill-light",
-  "name": "栋哥的 dbskill",
-  "brandSubtitle": "一个开源分身",
+  "id": "dongge-marginalia",
+  "name": "栋哥 · 语言的用法",
+  "brandSubtitle": "维特根斯坦式批注",
   "tagline": "心理问题 · 试试就知道",
   "projectPrefix": "",
   "projectLabel": "选择项目",
-  "statusText": "试试就知道",
-  "quote": "试试就知道",
-  "image": "dongge-light.png",
+  "statusText": "先把问题说清楚",
+  "quote": "语言的意义，在于它的用法",
+  "image": "dongge-marginalia.png",
   "colors": {
     "background": "#F4F0E7",
     "panel": "#FCFBF8",
@@ -20,8 +20,5 @@
     "text": "#292624",
     "muted": "#766E68",
     "line": "rgba(90, 72, 61, .18)"
-  },
-  "promoTitle": "感谢 Passion8 赞助",
-  "promoSub": "passion8.cc",
-  "promoUrl": "https://passion8.cc/register?aff=TuPe"
+  }
 }

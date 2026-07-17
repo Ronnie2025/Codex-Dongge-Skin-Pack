@@ -5,6 +5,34 @@ ROOT="$(cd "$(dirname "$0")/.." && pwd -P)"
 NODE="${NODE:-/Applications/ChatGPT.app/Contents/Resources/cua_node/bin/node}"
 [ -x "$NODE" ] || { printf 'Codex bundled Node.js was not found: %s\n' "$NODE" >&2; exit 1; }
 
+theme_set() {
+  local root="$1"
+  local theme
+  for theme in "$root"/*; do
+    [ -d "$theme" ] || continue
+    [ -f "$theme/theme.json" ] || continue
+    /usr/bin/basename "$theme"
+  done | /usr/bin/sort | /usr/bin/tr '\n' ' '
+}
+
+EXPECTED_THEMES='dongge-marginalia dongge-placard '
+[ "$(theme_set "$ROOT/bundled-themes")" = "$EXPECTED_THEMES" ] || {
+  printf 'macOS bundled themes are not exactly the two retained themes.\n' >&2
+  exit 1
+}
+[ "$(theme_set "$(dirname "$ROOT")/windows/themes")" = "$EXPECTED_THEMES" ] || {
+  printf 'Windows bundled themes are not exactly the two retained themes.\n' >&2
+  exit 1
+}
+"$NODE" -e '
+  const fs = require("fs");
+  for (const root of [process.argv[1], process.argv[2]]) {
+    const theme = JSON.parse(fs.readFileSync(`${root}/theme.json`, "utf8"));
+    if (theme.id !== "dongge-marginalia" || theme.image !== "dongge-marginalia.png") process.exit(1);
+    if (!fs.existsSync(`${root}/${theme.image}`)) process.exit(1);
+  }
+' "$ROOT/assets" "$(dirname "$ROOT")/windows/assets"
+
 while IFS= read -r file; do /bin/bash -n "$file"; done < <(
   /usr/bin/find "$ROOT" -type f \( -name '*.sh' -o -name '*.command' \) \
     ! -path '*/release/*' -print
@@ -35,7 +63,7 @@ fi
 TMP="$(/usr/bin/mktemp -d /tmp/codex-dream-skin-tests.XXXXXX)"
 trap '/bin/rm -rf "$TMP"' EXIT
 /bin/mkdir -p "$TMP/theme"
-/bin/cp "$ROOT/assets/dongge-light.png" "$TMP/theme/background.png"
+/bin/cp "$ROOT/assets/dongge-marginalia.png" "$TMP/theme/background.png"
 "$NODE" "$ROOT/scripts/write-theme.mjs" custom --output-dir "$TMP/theme" \
   --image background.png --name '测试主题' --tagline '测试口号' --quote 'TEST' \
   --accent '#11aa55' --secondary '#22bbcc' --highlight '#663399' >/dev/null
@@ -73,7 +101,7 @@ BACKUP="$TMP/theme-backup.json"
 "$NODE" "$ROOT/scripts/theme-config.mjs" restore "$CONFIG" "$BACKUP" >/dev/null
 /usr/bin/cmp -s "$CONFIG" "$TMP/original.toml"
 
-/usr/bin/env -u HOME /bin/bash -c '. "$1/scripts/common-macos.sh"; [ -n "$HOME" ] && [ "$SKIN_VERSION" = "1.3.0" ]' _ "$ROOT"
+/usr/bin/env -u HOME /bin/bash -c '. "$1/scripts/common-macos.sh"; [ -n "$HOME" ] && [ "$SKIN_VERSION" = "1.3.1" ]' _ "$ROOT"
 
 /bin/mkdir -p "$TMP/home/Desktop"
 HOME="$TMP/home" "$ROOT/scripts/create-launcher-app-macos.sh" >/dev/null

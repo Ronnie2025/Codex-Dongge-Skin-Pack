@@ -44,7 +44,7 @@ if (mode === "reset-demo") {
     throw new Error("Refusing to delete the bundled demo assets; pass a user --output-dir.");
   }
   await fs.rm(outputDir, { recursive: true, force: true });
-  console.log("Restored the bundled Dongge light preset.");
+  console.log("Restored the bundled Language in Use preset.");
   process.exit(0);
 }
 

@@ -13,9 +13,13 @@ New-Item -ItemType Directory -Force -Path $StateRoot | Out-Null
 $ThemesRoot = Join-Path $StateRoot 'themes'
 $ThemeDir = Join-Path $StateRoot 'theme'
 $BundledThemes = Join-Path $SkillRoot 'themes'
-$validThemes = @('dongge-marginalia', 'dongge-blueprint', 'dongge-placard', 'dongge-light')
+$validThemes = @('dongge-marginalia', 'dongge-placard')
 if (-not (Test-Path -LiteralPath $BundledThemes)) { throw "Bundled themes not found: $BundledThemes" }
 New-Item -ItemType Directory -Force -Path $ThemesRoot | Out-Null
+foreach ($retiredTheme in @('dongge-blueprint', 'dongge-light')) {
+  $retiredPath = Join-Path $ThemesRoot $retiredTheme
+  if (Test-Path -LiteralPath $retiredPath) { Remove-Item -LiteralPath $retiredPath -Recurse -Force }
+}
 Get-ChildItem -LiteralPath $BundledThemes -Directory | ForEach-Object {
   $target = Join-Path $ThemesRoot $_.Name
   if (Test-Path -LiteralPath $target) { Remove-Item -LiteralPath $target -Recurse -Force }
@@ -25,14 +29,10 @@ if ($ThemeId -and ($validThemes -notcontains $ThemeId)) { throw "Unknown theme i
 if (-not $ThemeId -and -not $NoThemePrompt) {
   Write-Host '选择默认栋哥图片：'
   Write-Host '1. 语言的用法'
-  Write-Host '2. 开源工作台'
-  Write-Host '3. 心理问题举牌'
-  Write-Host '4. 经典白板'
-  $selection = Read-Host '输入 1-4，直接回车默认 1'
+  Write-Host '2. 心理问题'
+  $selection = Read-Host '输入 1-2，直接回车默认 1'
   $ThemeId = switch ($selection) {
-    '2' { 'dongge-blueprint' }
-    '3' { 'dongge-placard' }
-    '4' { 'dongge-light' }
+    '2' { 'dongge-placard' }
     default { 'dongge-marginalia' }
   }
 }

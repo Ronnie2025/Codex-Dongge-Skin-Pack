@@ -67,8 +67,12 @@ install_bundled_themes() {
   local source="$PROJECT_ROOT/bundled-themes"
   local target="$STATE_ROOT/themes"
   local theme
+  local retired
   [ -d "$source" ] || fail "Bundled themes are missing: $source"
   /bin/mkdir -p "$target"
+  for retired in dongge-blueprint dongge-light; do
+    [ ! -e "$target/$retired" ] || /bin/rm -rf "$target/$retired"
+  done
   for theme in "$source"/*; do
     [ -d "$theme" ] || continue
     [ -f "$theme/theme.json" ] || continue
@@ -81,7 +85,7 @@ install_bundled_themes() {
 
 choose_initial_theme() {
   case "$THEME_ID" in
-    dongge-marginalia|dongge-blueprint|dongge-placard|dongge-light) return 0 ;;
+    dongge-marginalia|dongge-placard) return 0 ;;
     "") ;;
     *) fail "Unknown theme id: $THEME_ID" ;;
   esac
@@ -89,16 +93,14 @@ choose_initial_theme() {
   if [ "$PROMPT_THEME" = "true" ]; then
     local choice
     choice="$(/usr/bin/osascript <<'APPLESCRIPT' 2>/dev/null || true
-set picked to choose from list {"语言的用法", "开源工作台", "心理问题举牌", "经典白板"} with title "栋哥 Codex" with prompt "选择默认栋哥图片" default items {"语言的用法"}
+set picked to choose from list {"语言的用法", "心理问题"} with title "栋哥 Codex" with prompt "选择默认栋哥图片" default items {"语言的用法"}
 if picked is false then return ""
 return item 1 of picked
 APPLESCRIPT
 )"
     case "$choice" in
       语言的用法) THEME_ID="dongge-marginalia" ;;
-      开源工作台) THEME_ID="dongge-blueprint" ;;
-      心理问题举牌) THEME_ID="dongge-placard" ;;
-      经典白板) THEME_ID="dongge-light" ;;
+      心理问题) THEME_ID="dongge-placard" ;;
       *) THEME_ID="dongge-marginalia" ;;
     esac
   fi
